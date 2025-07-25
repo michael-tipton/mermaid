@@ -1,0 +1,36 @@
+classDiagram
+    class Vehicle {
+        -String make
+        -String model
+        -int year
+        -String color
+        +start()
+        +stop()
+        +accelerate()
+        +brake()
+    }
+    
+    class Car {
+        -int numberOfDoors
+        -String fuelType
+        +openTrunk()
+        +closeTrunk()
+    }
+    
+    class Motorcycle {
+        -String type
+        -boolean hasSidecar
+        +wheelie()
+    }
+    
+    class Driver {
+        -String name
+        -String licenseNumber
+        -Date licenseExpiry
+        +drive(Vehicle)
+        +park(Vehicle)
+    }
+    
+    Vehicle <|-- Car
+    Vehicle <|-- Motorcycle
+    Driver --> Vehicle : drives

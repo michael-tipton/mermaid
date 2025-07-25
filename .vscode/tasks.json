@@ -1,0 +1,96 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Create New Flowchart (.mmd)",
+            "type": "shell",
+            "command": "touch",
+            "args": ["${workspaceFolder}/diagrams/new-flowchart.mmd"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Create New Flowchart (.md)",
+            "type": "shell",
+            "command": "touch",
+            "args": ["${workspaceFolder}/diagrams/new-flowchart.md"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Create New Sequence Diagram (.mmd)",
+            "type": "shell",
+            "command": "touch",
+            "args": ["${workspaceFolder}/diagrams/new-sequence.mmd"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Create New Sequence Diagram (.md)",
+            "type": "shell",
+            "command": "touch",
+            "args": ["${workspaceFolder}/diagrams/new-sequence.md"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "List All Diagrams",
+            "type": "shell",
+            "command": "find",
+            "args": [
+                "${workspaceFolder}/diagrams",
+                "-name",
+                "*.md",
+                "-o",
+                "-name",
+                "*.mmd"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Open Examples Folder",
+            "type": "shell",
+            "command": "open",
+            "args": ["${workspaceFolder}/examples"],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

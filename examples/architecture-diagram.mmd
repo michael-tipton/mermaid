@@ -1,0 +1,43 @@
+---
+title: Cloud-Native Architecture
+config:
+  theme: default
+  themeVariables:
+    primaryColor: "#4A90E2"
+    primaryTextColor: "#fff"
+---
+
+architecture-beta
+    group frontend(cloud)[Frontend Tier]
+    group backend(cloud)[Backend Tier]
+    group data(cloud)[Data Tier]
+    group monitoring(cloud)[Monitoring Ops]
+
+    service webapp(server)[Web App] in frontend
+    service cdn(internet)[CDN] in frontend
+    
+    service api(server)[API Gateway] in backend
+    service auth(server)[Auth Service] in backend
+    service microservice1(server)[User Service] in backend
+    service microservice2(server)[Order Service] in backend
+    
+    service database(database)[Primary DB] in data
+    service cache(disk)[Redis Cache] in data
+    service storage(disk)[File Storage] in data
+    
+    service logs(server)[Log Aggregator] in monitoring
+    service metrics(server)[Metrics] in monitoring
+
+    cdn:B --> T:webapp
+    webapp:B --> T:api
+    api:B --> T:auth
+    api:R --> L:microservice1
+    api:R --> L:microservice2
+    microservice1:B --> T:database
+    microservice2:B --> T:database
+    microservice1:R --> L:cache
+    microservice2:R --> L:cache
+    storage:T --> B:microservice2
+    
+    logs:T --> B:api
+    metrics:T --> B:database

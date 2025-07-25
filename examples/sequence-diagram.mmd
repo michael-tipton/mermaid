@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant U as User
+    participant F as Frontend
+    participant B as Backend
+    participant D as Database
+    
+    U->>F: Login request
+    F->>B: Authenticate user
+    B->>D: Query user credentials
+    D-->>B: Return user data
+    B-->>F: Authentication result
+    F-->>U: Login response
+    
+    Note over U,D: Authentication flow completed
