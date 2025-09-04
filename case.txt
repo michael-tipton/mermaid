@@ -1,0 +1,199 @@
+EOS 
+
+  
+
+Tech Director and EOS Branch Chief: 
+
+Download all Confluence for IRB documentation 
+
+-RAG-ify? And create chatbot on TEN for interaction 
+
+ 
+
+Index engagement reports 
+
+ 
+
+Ingest PDFs of documentation and references for context background 
+
+-ex: MS Cloud Log guidance, etc 
+
+ 
+
+Coding documentation 
+
+  
+
+  
+
+IR 
+
+  
+
+Jason Hird and Stephen Thurston:  
+
+Assistance with writing powershell scripts 
+
+  
+
+  
+
+TECHMAN-59 
+
+  
+
+  
+
+  
+
+PH 
+
+  
+
+Compiled from Meeting: Sigma Rules Strategy Session: EDR/PAC Focus 
+
+Requirements Captured: 
+
+The ability for CISA to create and manage detections/alerts directly within the EDR vendor consoles at the parent level, rather than just having visibility into detections triggered at the child/agency level. 
+
+Seamless integration between the Sigma rule format and the vendor consoles, allowing CISA to easily translate and deploy Sigma Rules across the different EDR platforms. 
+
+Expanded field-level support within the vendor data sets to enable solid Sigma rule creation and automation. 
+
+Potential for leveraging AI/machine learning tools to assist in writing, translating, and understanding Sigma Rules. 
+
+Standardized processes and workflows for incorporating Sigma Rules into the team's threat hunting activities. 
+
+A centralized repository of threat actor-specific Sigma Rules and TTPs to streamline the team's research and detection development. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Jiseng (Anthony) So email 7/16/25: 
+
+Regarding LLMs,  I think that many of us would want to use an LLM to write queries in the various tools, translate queries between their various syntaxes, or describe in English what a query is doing: 
+
+Elastic 
+
+CrowdStrike 
+
+Palo Alto Cortex 
+
+Microsoft Defender for Endpoint 
+
+SentinelOne 
+
+Splunk 
+
+Trellix 
+
+Sigma 
+
+  
+
+"Write me a query for CrowdStrike advanced event search to give me the top 100 external IP addresses that have had conversations with the most endpoints on the local network." 
+
+  
+
+"What is the result of this query? What does it do? 
+
+  
+
+earliest=-365d ExternalApiType=Event_DetectionSummaryEvent 
+
+| stats dc(AgentIdString) as uniqueEndpoints count(AgentIdString) as detectionCount by Tactic, Technique 
+
+| eval detectsPerEndpoint=round(detectionCount/uniqueEndpoints,0) 
+
+| sort - detectionCount 
+
+" 
+
+  
+
+"Convert this query to Palo Alto Cortex syntax: 
+
+  
+
+#event_simpleName=UserLogon 
+
+|Timestamp:=Timestamp*1000 
+
+|Timestamp:=formatTime(format="%F %T.%L", field=timestamp, locale=en_US, timezone="EST") 
+
+|Timestamp=/(?<Year>\d+)\D(?<Month>\d+)\D(?<Day>\d+)\s+(?<Hour>\d+)\D(?<Minute>\d+)\D(?<Second>\d+)\D(?<Milli>\d+)$/i 
+
+|case { 
+
+// Year=2024 AND Month <=10 AND Day<=31 AND Hour>=18 AND Minute=0 AND Second=0 | workHours := "no" ; 
+
+Hour>22 | workHours := "no" ; 
+
+Hour<05 | workHours := "no" ; 
+
+Hour<=22 | workHours := "yes" ; 
+
+Hour>=05 | workHours := "yes" ; 
+
+* 
+
+} 
+
+| workHours = no 
+
+" 
+
+  
+
+We would want to ask about historical events in plain English: 
+
+  
+
+"When was the last time we did a hunt on NARA?" 
+
+"Who was the team lead for the last hunt on USPTO?" 
+
+"How many endpoints were present on the last NASA hunt? How many of those were Linux?" 
+
+  
+
+It could be helpful for basic information: 
+
+  
+
+"How do I reset my TEN password?" 
+
+"Which credentials do I use to login to CyberSentry?" 
+
+"What was the name of the cybersecurity exercise in Korea?" 
+
+  
+
+I think we will want the ability to finetune the model(s) in case it's not well acquainted with the syntaxes at first. We have many queries on the TEN Gitlab. We could feed it the hunt reports. I wonder what the result would be if we stuffed the entire CrowdStrike data dictionary into an LLM. 
+
+ 
+
+ 
+
+ 
+
+Kimberly Stokes on CISAChat: 
+
+“use it all the time I especially like the way it lays scripts out.  So it forces me to see every command within the script  and what that command does.  It is also a quick resource to decode base64 scripts.” 
+
+Currently use if for: 
+
+Finding out more information about a particular named malware 
+
+Finding out more information about a known group that created the malware 
+
+Finding out what a script is doing to include what my be going wrong with a particular script. 
+
+How to decode a script using it. 
+
+“Someone mentioned to me that CISAChat struggled with html code.  But if they put the same data in DHSChat, it was able to take the data and code it. I'm not sure exactly of all the details.  But DHS Chat seems to handle HTML coding better the CISAChat.  Lastly I avoid DHSChat because it won't let you put in an IP address.  Many of our scripts have IP addresses in them so being able to get these scripts deciphered is important.” 
