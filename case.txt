@@ -1,199 +1,240 @@
-EOS 
+Epics → Use Cases (Merged)
+1) Unified Knowledge Ingestion & RAG (IRB/TEN-wide)
 
-  
+Bulk Confluence harvest (IRB)
+As an EOS Tech Director, I want to export and ingest IRB Confluence spaces (pages, attachments, labels) so that hunts and engineering teams can retrieve authoritative guidance via RAG.
+Done when: Full crawl + delta sync, metadata (space/page, labels, owner, date), access controls mirror Confluence.
 
-Tech Director and EOS Branch Chief: 
+Engagement & hunt report indexing
+As a PH lead, I want finalized engagement/hunt reports indexed so I can ask natural-language questions about past operations.
+Done when: Reports (PDF/DOCX) are chunked, summarized, and retrievable; redaction flags honored.
 
-Download all Confluence for IRB documentation 
+Reference PDF ingestion (e.g., MS Cloud Logs guidance, vendor docs)
+As an analyst, I want common reference PDFs ingested with table/diagram extraction so RAG answers cite exact sections.
+Done when: Tables/figures OCR’d, section anchors preserved; citations include page/section.
 
--RAG-ify? And create chatbot on TEN for interaction 
+Code & script documentation ingestion
+As an IR engineer, I want code READMEs, comments, and examples ingested so the assistant can explain and pattern-match scripts.
+Done when: Repos (TEN GitLab) indexed with file paths/branches; license/privacy rules applied.
 
- 
+Authoritativeness & freshness stamps
+As a knowledge steward, I want sources marked “authoritative” with TTLs so outdated guidance is flagged or re-verified.
+Done when: Per-document authority flag, TTL/owner, auto-notify on expiry, stale-content filters in RAG.
 
-Index engagement reports 
+Selective retrieval profiles
+As a user, I want role-tailored retrieval profiles (Ops/IR/Detections/Leadership) so responses fit my audience and needs.
+Done when: Profile selection biases ranking, tone, and citation depth; user can override per-question.
 
- 
+Entity/glossary auto-extraction
+As an analyst, I want auto-built glossaries of agencies, tools, acronyms, detections to improve grounding and disambiguation.
+Done when: Glossary terms with definitions and canonical IDs feed the RAG retriever and UI hovers.
 
-Ingest PDFs of documentation and references for context background 
+FOIA/legal-hold–aware search
+As compliance, I want FOIA/legal-hold tagging so search and exports respect restrictions.
+Done when: Doc-level tags enforce inclusion/exclusion; FOIA bundles export with source citations.
 
--ex: MS Cloud Log guidance, etc 
+Air-gap / offline bundles
+As a detached enclave user, I want exportable RAG snapshots so I can query locally without network access.
+Done when: One-click bundle (embeddings + indexes + citations) with checksum and import instructions.
 
- 
+2) TEN Chat Assistant (Conversational Access to the Above)
 
-Coding documentation 
+TEN chatbot for ops FAQs
+As any TEN user, I want to ask “How do I reset my TEN password?” or “Which creds for CyberSentry?” and get policy-compliant, source-linked answers.
+Done when: Top 50 FAQs answered with citations; fallback to “I don’t know” + owner escalation.
 
-  
+Hunt history Q&A
+As a hunt PM, I want to ask “When was the last NARA hunt? Who led USPTO? How many NASA endpoints/Linux?”
+Done when: Answers have doc links and dates; entity disambiguation (agency/engagement IDs) working.
 
-  
+3) Query Copilot (Author, Translate, Explain Across Tools)
 
-IR 
+Natural-language → query generation
+As a hunter, I want “top 100 external IPs by unique endpoints in CrowdStrike” turned into a correct AQL/QL.
+Done when: Generates runnable queries for CrowdStrike, Elastic, Cortex, MDE, SentinelOne, Trellix, Splunk.
 
-  
+Cross-platform query translation
+As an analyst, I want to convert a working query from Vendor A to Vendor B syntax automatically.
+Done when: Side-by-side translation with comments on semantic gaps and field mapping.
 
-Jason Hird and Stephen Thurston:  
+Query explanation (“What does this do?”)
+As a reviewer, I want plain-English explanations of a query’s logic, fields, time windows, and caveats.
+Done when: Outputs stepwise explanation + sample results schema; flags risky filters.
 
-Assistance with writing powershell scripts 
+Data dictionary grounding
+As a model owner, I want vendor data dictionaries and field catalogs embedded so the copilot maps fields correctly.
+Done when: Each platform’s schema is embedded; unmapped fields highlighted.
 
-  
+Query cookbook generation
+As a team, I want a curated cookbook of common queries with parameters and sample outputs for fast reuse.
+Done when: Versioned recipes by platform; searchable with tags; examples validated in CI.
 
-  
+Similarity & variant surfacing
+As an author, I want near-duplicate/alternative queries suggested so I don’t reinvent or ship weaker versions.
+Done when: Similarity index proposes prior art with usage stats and “better” variants.
 
-TECHMAN-59 
+Synthetic data sandbox
+As a detections engineer, I want mock EDR/SIEM telemetry to safely test and demo queries.
+Done when: Generator produces realistic schemas/values; golden scenarios for edge cases.
 
-  
+Vendor schema drift watch
+As a maintainer, I want alerts when a vendor changes field names/types so translations don’t silently break.
+Done when: Nightly schema diff + alert; affected queries/rules listed with fix suggestions.
 
-  
+4) Sigma Rule Lifecycle & EDR Orchestration
 
-  
+Sigma authoring assistant
+As a detections engineer, I want to draft Sigma from NL prompts or example telemetry, with TTP tagging.
+Done when: Valid Sigma generated with references (ATT&CK, source fields), unit tests, and false-positive notes.
 
-PH 
+Sigma ⇄ vendor console deployment
+As CISA at parent level, I want to translate Sigma to native detections and deploy to vendor consoles centrally.
+Done when: Push API to CrowdStrike/MDE/S1/Trellix/Cortex; track deployment status and scope (parent vs child).
 
-  
+Field-support validator
+As an engineer, I want to know if a Sigma rule’s fields exist in a target platform and what alternates are available.
+Done when: Pre-flight check lists required fields; suggests field substitutions.
 
-Compiled from Meeting: Sigma Rules Strategy Session: EDR/PAC Focus 
+Centralized Sigma/TTP repository
+As a team, we want actor-specific Sigma and TTPs with versioning, ownership, and performance metrics.
+Done when: Repo with tagging (actor, tactic, data source), PR workflow, test harness, and hit-rate telemetry.
 
-Requirements Captured: 
+AI-assisted Sigma review
+As a reviewer, I want auto-comments on coverage, perf, FP risk, and overlapping rules.
+Done when: Lint + heuristics + historical telemetry produce review notes.
 
-The ability for CISA to create and manage detections/alerts directly within the EDR vendor consoles at the parent level, rather than just having visibility into detections triggered at the child/agency level. 
+Canary deployment rings
+As a platform owner, I want ring-based rollouts of rules to limited agencies with auto-rollback on issues.
+Done when: Ring configs, health metrics, rollback triggers, and post-mortem capture.
 
-Seamless integration between the Sigma rule format and the vendor consoles, allowing CISA to easily translate and deploy Sigma Rules across the different EDR platforms. 
+Blast-radius estimator
+As a maintainer, I want predicted scope/cost before enabling a rule to avoid overload and noise.
+Done when: Estimator uses historical telemetry to forecast hits, ingest cost, and FP risk.
 
-Expanded field-level support within the vendor data sets to enable solid Sigma rule creation and automation. 
+Coverage heatmap
+As leadership, I want ATT&CK × data-source coverage visualized to spot detection gaps by agency/platform.
+Done when: Heatmap auto-updates from rules + telemetry; exports to PPT/PNG.
 
-Potential for leveraging AI/machine learning tools to assist in writing, translating, and understanding Sigma Rules. 
+OCSF/STIX normalization
+As an engineer, I want normalized telemetry so a Sigma compiles across vendors with fewer deltas.
+Done when: Mappings per vendor; compile pipeline targets normalized schema first.
 
-Standardized processes and workflows for incorporating Sigma Rules into the team's threat hunting activities. 
+CI/CD for detections
+As a team, I want gated PR checks (lint, tests, field availability) and signed releases for rules.
+Done when: Required checks block merges; signed artifacts with release notes.
 
-A centralized repository of threat actor-specific Sigma Rules and TTPs to streamline the team's research and detection development. 
+5) Script Copilot (IR focus)
 
- 
+PowerShell script drafting & linting
+As Jason/Stephen (IR), I want starter PS scripts from plain-English tasks with parameters and safety checks.
+Done when: Outputs script, comments, and a dry-run mode; PSSA lint passes.
 
- 
+Script explain & troubleshoot
+As an IR, I want line-by-line explanation, common failure points, and suggested fixes.
+Done when: Explanations include what each cmdlet does, expected inputs/outputs, and guarded alternatives.
 
- 
+Base64/obfuscation decode helper
+As an analyst, I want automatic extraction/decoding of base64 and common obfuscation patterns.
+Done when: Produces decoded blobs with safety redactions + IOC extraction.
 
- 
+Safe detonation/explain lab
+As an IR, I want a contained sandbox to run scripts and auto-explain behavior with IOC capture.
+Done when: Ephemeral environment, diff of file/registry/net artifacts, exportable report.
 
-Jiseng (Anthony) So email 7/16/25: 
+Multi-language refactor
+As an engineer, I want PS↔Python↔Bash refactors with OS-aware guardrails.
+Done when: Transpiled versions pass unit smoke tests and include platform caveats.
 
-Regarding LLMs,  I think that many of us would want to use an LLM to write queries in the various tools, translate queries between their various syntaxes, or describe in English what a query is doing: 
+IOC hygiene assistant
+As an analyst, I want IOC normalization/de-dupe/expansion and scoring from scripts and reports.
+Done when: Outputs normalized IOC set with confidence, enrichment, and suppression list.
 
-Elastic 
+6) Threat Intel Summarization & IOC Hygiene
 
-CrowdStrike 
+Malware/family brief generator
+As an analyst, I want a one-pager on a named malware: behavior, IOCs, TTPs, detections, and mitigations.
+Done when: Cited summary with ATT&CK mapping and vendor-specific detection pointers.
 
-Palo Alto Cortex 
+Actor profile quick-look
+As a hunter, I want concise actor overviews with recent activity and recommended hunts.
+Done when: Last-seen timeline + prioritized hunts + rule links.
 
-Microsoft Defender for Endpoint 
+7) Model Adaptation, Governance, and Quality
 
-SentinelOne 
+Fine-tune/LoRA with org data
+As a model steward, I want to adapt models on TEN GitLab queries, Sigma repo, hunt reports.
+Done when: Training/eval pipeline (red-team prompts, hallucination tests) with rollback and model cards.
 
-Splunk 
+RBAC, masking, and policy controls
+As security, I want RBAC inherited from source systems, IOC/IP handling rules, and audit logs of prompts/answers.
+Done when: Access enforced per user/space; PII/IP policies configurable; full audit trail.
 
-Trellix 
+Evaluation harness
+As a product owner, I want measurable accuracy for query gen/translation and Sigma lint across vendors.
+Done when: Golden sets + pass/fail gates; error taxonomy & trend dashboard.
 
-Sigma 
+Granular RBAC at chunk level
+As security, I want permissions down to paragraph/code-block to prevent overexposure in answers.
+Done when: Chunk-level ACLs enforced at retrieval and logging.
 
-  
+Secrets/PII/IP guardrails
+As compliance, I want automatic detection/masking of sensitive data with policy overrides when justified.
+Done when: Policy engine logs redactions/overrides; configurable per space.
 
-"Write me a query for CrowdStrike advanced event search to give me the top 100 external IP addresses that have had conversations with the most endpoints on the local network." 
+Audit & explainability
+As leadership, I want “why this answer” provenance for reviews and briefings.
+Done when: Prompt, sources, and ranking shown; exportable trace.
 
-  
+Records retention controls
+As records managers, we want to apply retention schedules (e.g., 245→365 days) to ingested artifacts.
+Done when: Policy-driven lifecycle actions with reports and holds.
 
-"What is the result of this query? What does it do? 
+Human-in-the-loop feedback loop
+As a product owner, I want structured “good/needs-fix” signals feeding eval sets and fine-tunes.
+Done when: Feedback UI + taxonomy; periodic retraining jobs.
 
-  
+Golden-set evaluations (periodic)
+As QA, I want scheduled scoring of query-gen/translation and Sigma compilation across platforms.
+Done when: Scorecards trend over time; regressions page with diffs.
 
-earliest=-365d ExternalApiType=Event_DetectionSummaryEvent 
+Cost/latency observability
+As an operator, I want token/latency metrics with budgets and alerts per feature.
+Done when: Dashboards + budget thresholds + alerts.
 
-| stats dc(AgentIdString) as uniqueEndpoints count(AgentIdString) as detectionCount by Tactic, Technique 
+Prompt/adapter registries
+As a maintainer, I want versioned prompt templates and LoRA adapters per vendor with rollback.
+Done when: Registry with semantic versioning and release notes.
 
-| eval detectsPerEndpoint=round(detectionCount/uniqueEndpoints,0) 
+8) Data Engineering & Normalization
 
-| sort - detectionCount 
+Field discovery & dictionary sync
+As a detections engineer, I want real-world field availability/cardinality per agency to drive robust rules.
+Done when: Periodic crawls populate a living dictionary; gaps drive backlog items.
 
-" 
+Unit schemas for detections
+As an architect, I want minimal “unit” schemas to decouple rules from raw vendor peculiarities.
+Done when: Unit schemas defined; compilers map unit→vendor fields with tests.
 
-  
+9) Hunt Ops & Case Intelligence
 
-"Convert this query to Palo Alto Cortex syntax: 
+Engagement timeline builder
+As a PM, I want auto-built chronologies (events, queries, findings, comms) with export to DOCX/PDF.
+Done when: Timeline renders with filters; exports with citations.
 
-  
+Case linking & graph view
+As an analyst, I want graphs connecting actors, tools, IOCs, hunts, detections to suggest next steps.
+Done when: Graph UI + “related cases” suggestions; link provenance preserved.
 
-#event_simpleName=UserLogon 
+Proactive hunt suggestions
+As a hunt lead, I want vendor/ISAC intel ingested to propose hunts + starter Sigma per agency profile.
+Done when: Weekly suggestions with rationale and data readiness checks.
 
-|Timestamp:=Timestamp*1000 
+10) Analyst UX & Enablement
 
-|Timestamp:=formatTime(format="%F %T.%L", field=timestamp, locale=en_US, timezone="EST") 
+Task-to-artifact wizard
+As an analyst, I want “I want to detect X” to output Sigma, platform queries, a dashboard widget, and a brief.
+Done when: Guided flow creates artifacts + PRs; placeholders for owner review.
 
-|Timestamp=/(?<Year>\d+)\D(?<Month>\d+)\D(?<Day>\d+)\s+(?<Hour>\d+)\D(?<Minute>\d+)\D(?<Second>\d+)\D(?<Milli>\d+)$/i 
-
-|case { 
-
-// Year=2024 AND Month <=10 AND Day<=31 AND Hour>=18 AND Minute=0 AND Second=0 | workHours := "no" ; 
-
-Hour>22 | workHours := "no" ; 
-
-Hour<05 | workHours := "no" ; 
-
-Hour<=22 | workHours := "yes" ; 
-
-Hour>=05 | workHours := "yes" ; 
-
-* 
-
-} 
-
-| workHours = no 
-
-" 
-
-  
-
-We would want to ask about historical events in plain English: 
-
-  
-
-"When was the last time we did a hunt on NARA?" 
-
-"Who was the team lead for the last hunt on USPTO?" 
-
-"How many endpoints were present on the last NASA hunt? How many of those were Linux?" 
-
-  
-
-It could be helpful for basic information: 
-
-  
-
-"How do I reset my TEN password?" 
-
-"Which credentials do I use to login to CyberSentry?" 
-
-"What was the name of the cybersecurity exercise in Korea?" 
-
-  
-
-I think we will want the ability to finetune the model(s) in case it's not well acquainted with the syntaxes at first. We have many queries on the TEN Gitlab. We could feed it the hunt reports. I wonder what the result would be if we stuffed the entire CrowdStrike data dictionary into an LLM. 
-
- 
-
- 
-
- 
-
-Kimberly Stokes on CISAChat: 
-
-“use it all the time I especially like the way it lays scripts out.  So it forces me to see every command within the script  and what that command does.  It is also a quick resource to decode base64 scripts.” 
-
-Currently use if for: 
-
-Finding out more information about a particular named malware 
-
-Finding out more information about a known group that created the malware 
-
-Finding out what a script is doing to include what my be going wrong with a particular script. 
-
-How to decode a script using it. 
-
-“Someone mentioned to me that CISAChat struggled with html code.  But if they put the same data in DHSChat, it was able to take the data and code it. I'm not sure exactly of all the details.  But DHS Chat seems to handle HTML coding better the CISAChat.  Lastly I avoid DHSChat because it won't let you put in an IP address.  Many of our scripts have IP addresses in them so being able to get these scripts deciphered is important.” 
+Executive brief generator
+As leadership, I want 1-pagers with key metrics, FP rate, and coverage changes per quarter.
+Done when: Templated briefs pull from telemetry and rule repo; export to PPT/PDF.
