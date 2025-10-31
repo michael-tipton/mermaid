@@ -1,0 +1,38 @@
+Coordinated between CB and VM to help remove data errors in the Cloudflare logs.
+	NSA had issues with PDNS data that was being piped to them from low to high.
+
+Took part CISA AI training 2025.
+
+Completed Ws02 --- working with and also now need to include account management team
+
+Wrote Powershell script that gets SamAccountName by first and last name for whitelisting ae-blue
+	Wrote 2 documents on how to white list and redirect to a page asking for access for this whitelist effort
+
+Helped reduce duplicate data for protdns and reduce cost?
+	This was the effort to move the PostgreSQL database to ECE
+
+Designed out TECHMAN
+
+Took the Generative AI Elastic training.
+
+Took the ML Elastic training.
+
+The crowdstrike analysis,
+	Put together white paper that explination on the duel alerts and how to use them.
+	Did analysis on the CB CS data to show not enough fields are present to help do the SavedSearches in ECE.
+	
+
+sentinelone analysis, 
+	Analysis done to show not enough fields are present and or documentation on how best to use this data feed in the ECE
+
+UAL log analysis
+
+and we had to fix the protective dns acknowledgements from Accenture
+
+Worked on Service Map
+
+Worked on a better way to centralize our information and display it in SharePoint.
+
+Got Xpanse data added to UADS search results
+
+Helped write a bash script to pull pcap for IRB and the TS campaign reducing the amount of time of remoting in.
