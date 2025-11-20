@@ -1,0 +1,134 @@
+This system will provide Cryptographic Key Visibility and Key Collection Capability to Threat Hunting (TH). 
+ 
+Purpose 
+The minimum viable product (MVP) should solicit, receive, and store public cryptographic keys from specific network devices. 
+The “goal” is to enable TH to query, identify, and collect public cryptographic keys exchanged during network handshakes. There are two main purposes: 
+Detect anomalies (e.g., encryption downgrade, invalid certificates, suspicious reuse of keys) 
+Assess potential risks associated with cryptographic implementations across observed network traffic. 
+ 
+Scope 
+This document provides requirements and embedded acceptance criteria for cryptographic key visibility and collection from network nodes. It distinguishes between requirements for an MVP (shall statement) and for a “goal” (will) for a larger effort. 
+ 
+Assumptions and Constraints 
+Assumptions 
+This requirements document assumes that network nodes will respond to queries for cryptographic keys. 
+Testing for network response should be conducted prior to development work. 
+The system does not need to authenticate with devices at the target IP.   
+ 
+Constraints 
+Initial development and use of this capability shall be within Federal Civilian Executive Branch (FCEB) agencies. A later possible expansion into Critical Infrastructure (CI) is out of scope for now. 
+The MVP shall be completed by early January 2026 for two main reasons: 
+To respond to the immediate needs of a current incident  
+To meet a short-term overarching FCEB agency need before the anticipated rollout of Network Event Sensors (NES), which this capability will then support over the long term. 
+ 
+FUNCTIONAL REQUIREMENTS 
+Functional Requirements 
+ 
+Cryptographic Key Collection Functional Requirements 
+Section/ Requirement ID  
+	
+Requirement Definition 
+
+
+CKC1.0 
+	
+The system shall detect and log cryptographic handshakes or initial public key transfers (e.g., TLS at the transport layer, SSH at the application layer, and IPsec at the network layer) observed in network traffic. 
+
+
+CKC1.1 
+	
+The system will detect, log and display cryptographic TLS/SSL handshakes observed in network traffic at a 95% success rate. 
+
+
+CKC2.0 
+	
+The system will extract and display all metadata associated with the handshake, or initial public key transfer. 
+
+
+CKC2.1 
+	
+The system will support extract and display of metadata, including protocol version, negotiated cypher suite, key exchange mechanism, and certificate chain, as applicable. 
+
+
+CKC3.0 
+	
+The system shall identify and extract the public key used during the handshake, or initial public key transfer. 
+
+
+CKC3.1 
+	
+The system shall provide access to the full public key in a standard format, such as text-based PEM or binary-based DER.  
+
+
+CKC3.2 
+	
+The system shall support export of the key and IP address metadata for offline analysis. 
+
+
+CKC3.3 
+	
+The system will support export of the key and all associated metadata for offline analysis. 
+
+
+CKC4.0 
+	
+The system shall provide an analyst search function for handshakes and initial public key transfers. 
+
+
+CKC4.1 
+	
+The system shall support analyst searches by IP address or domain. 
+
+
+CKC4.2 
+	
+The system will support analyst searches by cryptographic algorithm, such as the common RSA encryption or the more nimble ECDSA encryption. 
+
+
+CKC4.3 
+	
+The system will support analyst searches by key length. 
+
+
+CKC4.4 
+	
+The system will support analyst searches by certificate issuer or subject. 
+
+
+CKC4.5 
+	
+The system will support analyst searches by cipher suite or protocol version. 
+
+
+CKC5.0 
+	
+The system will provide both real-time and historical access to observed handshake data, with latency less than 500 msec. 
+
+
+CKC5.1 
+	
+The system will support time-based filtering of handshake data for retrospective analysis. 
+
+
+CKC6.0 
+	
+The system shall ensure that key collection and storage comply with federal cybersecurity and privacy regulations. 
+
+
+CKC7.0 
+	
+The system shall provide audit logs for any access to collected key data. 
+
+
+CKC8.0 
+	
+The system will offer API access for integration with existing TH platforms and SIEMs. 
+
+
+CKC9.0 
+	
+The system will support automated enrichment of observed network events with cryptographic metadata. 
+OTHER REQUIREMENTS 
+User Interface 
+This requirements document covers the data that needs to be displayed. It does not specify the means of display, whether GUI or CLI. 
+ 
