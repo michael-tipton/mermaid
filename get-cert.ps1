@@ -46,3 +46,14 @@ $Target = "google.com"
 $OutputPath = "C:\Temp\google_cert.pem" # Ensure C:\Temp directory exists or change path
 
 Get-SSLCertificatePem -Hostname $Target -FilePath $OutputPath
+
+
+
+
+
+
+
+
+
+
+powershell -Command "$tcp = New-Object Net.Sockets.TcpClient('google.com', 443); $stream = $tcp.GetStream(); $sslStream = New-Object Net.Security.SslStream($stream); $sslStream.AuthenticateAsClient('google.com'); $cert = New-Object Security.Cryptography.X509Certificates.X509Certificate2($sslStream.RemoteCertificate); $bytes = $cert.Export([Security.Cryptography.X509Certificates.X509ContentType]::Cert); $base64 = [Convert]::ToBase64String($bytes); $pem = '-----BEGIN CERTIFICATE-----`r`n' + ($base64 -replace '(.{64})', '$1`r`n') + '`r`n-----END CERTIFICATE-----`r`n'; Set-Content -Path C:\Temp\output.pem -Value $pem -Encoding Ascii; $sslStream.Close(); $tcp.Close(); Write-Host 'Certificate saved to C:\Temp\output.pem'"
