@@ -1,0 +1,105 @@
+Governance, coordination, and stakeholder support
+
+
+Shadowserver historical data governance (POC identification & hand‑offs). You engaged CDaaS/OTD/NRMC and added Jackson Welch to drive the data stewardship path; later you explicitly pointed requestors to Jackson as the best POC for the AE Shadowserver ingest decommission discussion. [Re: Shadow...ssion form | Outlook]
+
+
+COO syncs & TECHMAN updates. You participated in EOS coordination threads and helped move agenda items and status into the right TECHMAN tickets during the COO | C.E. Sync cadence (https://maestro.dhs.gov/jira/browse/TECHMAN-503). [RE: COO -...C.E. Sync | Outlook]
+
+
+HFS Slack / TECHMAN request untangling. In the CDE & IPL Weekly Sync chat you volunteered to “put our comments in the chat” and were called out by Penico, Samantha as already working on “untangling the fun” around the Slack/TECHMAN request ambiguity. CDE & IPL Weekly Sync  [CDE & IPL...eekly Sync | Teams]
+
+
+UADS Databricks Dashboard navigation. You coordinated the addition of a Tools Directory link for the new Databricks dashboard (distinct from AE Blue), asking for title/description and offering to publish once you received them. [Hoskins, T...as in chat | Teams]
+
+
+Google Threat Intelligence roadmap awareness. You propagated an external GTI News & Roadmap webinar invite to the TH EOS CDE feds group (“FYSA”), improving situational awareness. Re: Webinar Invite: Google Threat Intelligence News & Roadmap [Re: Webina...& Roadmap | Outlook]
+
+
+
+Engineering & product work (IMX, Gemini, DFIR‑IRIS, IRSENAL, THREADS, Playbook‑NG, Digger)
+
+
+CDE weekly updates (your authored summary). You documented and shared concrete progress across multiple efforts:
+
+TEN AD replacement research kickoff (EOS‑8144).
+Local AI Dev Pilot initial tooling and constraints; onboarding guide and model options (EOS‑8122).
+IMX search enhancements and WhoIs ingestion (EOS‑8002, EOS‑7754).
+Bespin Kits – Splunk Smart Store compression benchmarking, selecting pigz as default (EOS‑8103).
+CDE Updates [CDE Updates | Outlook]
+
+
+
+IMX MPE healthcheck remediation (tracking). You captured the IMX MPE connection issue and confirmation that alerting worked after forced failure testing, maintaining an audit of the fix and notifications. (Jira+2026‑01‑20T10_11_51‑0500) [Jira+2026-...11_51-0500 | Word]
+
+
+IMX/TAXII open‑source release readiness. You were tapped to create the TAXII blank repository and coordinate remaining open‑source prep (SBOMs, third‑party notices, license hygiene) alongside Lumi, Qem. [Re: IMX Op...st Updates | Outlook]
+
+
+DFIR‑IRIS (SWORD) path & backlog alignment (leadership threads). You supported EOS leadership huddles to determine the development path for DFIR‑IRIS, including LOE reviews and prep for decisions. RE: DFIR‑IRIS – TECHMAN‑366 EOS Leadership Decision [RE: DFIR-I...p Decision | Outlook]
+
+
+Digger / ProtDNS modernization & Databricks considerations. You were asked to sponsor backlog tickets to modernize Digger, reconcile Cloudflare TLP limitations, and consider ProtDNS→Databricks ingest for PHB analysis. [Re: Digger repo | Outlook]
+
+
+
+DevSecOps, infrastructure, and migrations
+
+
+CISA DNS decommission review. You raised practical questions on names to preserve, script dependencies (e.g., moe‑poxy), and S3 buckets during the US‑CERT.GOV DNS cleanup—coordinating with Lumi, Qem. Re: CISA US-CERT.GOV DNS Decomming [Re: CISA U...Decomming | Outlook]
+
+
+Maestro Jira “Xray” archiving clarification. You confirmed the Xray plugin wasn’t being used by CDE despite being enabled, helping scope archiving impact. Re: Notice: Xray Issue Archiving in Maestro Jira [Re: Notice...estro Jira | Outlook]
+
+
+CTEN AD assessment & decommission documentation review. You coordinated doc sharing and participation for the C‑TEN AD Assessment & Decommission review with CDE contributors (e.g., Yu, Desong (CTR)), ensuring the right SMEs were in the room. Re: C-TEN AD Assessment & Decommissioning Document Review w/ CDE [Re: C-TEN...iew w/ CDE | Outlook]
+
+
+Maestro → Atlassian Gov Cloud (AGC) migration preparation. You were engaged in pilot‑tester identification and inventory guidance (dashboards, workflows, custom fields) for TH projects migrating to AGC; you were on the distribution for the initial TH user list to submit to CISA IT.
+– https://ociocisa.sharepoint.com/:x:/r/teams/TECHMANREQMANCollaboration/Shared%20Documents/DHS%20Maestro/TH%20Users%20For%20AGC%20Initial%20List%20.xlsx?web=1 [RE: Maestr...at Hunting | Outlook]
+
+
+
+Data & analytics platform transitions
+
+
+Zeppelin → Databricks notebook migration. You posted DBX_Notebook Migrations.xlsx, requested access for Malone, Laura, and helped track notebook categories (dependency/blocker/compromise) and “migrated” vs. “refactored” status for analysts. CDE Feds-Only Chat [CDE Feds-Only Chat | Teams]
+
+
+CAWS onboarding / AE Blue migration requirements. You attended or tentatively accepted requirements gathering sessions to align Threat Hunt needs and tooling with CAWS onboarding, including AE Blue migration touchpoints.
+– CAWS Threat Hunt Onboarding Requirements Gathering  
+– CAWS Onboarding Requirements Gathering for AE Blue [CAWS Threa...Gathering | Meeting] [CAWS Onboa...or AE Blue | Meeting]
+
+
+
+Local AI Development Pilot
+
+Pilot kickoff and weekly syncs. You contributed to the Local AI Dev Pilot (local‑only models/workflows on TEN), tracked outcomes (safe workflows, hardware tiers, limitations), and joined weekly syncs/huddles (Teams and Slack).
+– CDE Updates (pilot details) 
+– Local AI Dev Pilot Weekly Sync (recurring calendar entries with agenda and Slack channel) — Slack channel: cde‑local‑ai‑dev‑pilot [CDE Updates | Outlook] [Local AI D...eekly Sync | Meeting], [Local AI D...eekly Sync | Meeting], [Local AI D...eekly Sync | Meeting], [Local AI D...eekly Sync | Meeting], [Local AI D...eekly Sync | Meeting]
+
+
+Contracting, SOWs, and invoices
+
+
+CASS‑E IDIQ SOW authoring/edits. You last‑modified the TH CASS‑E IDIQ SOW in December 2025, including sections on Sustainment (24×7×365 monitoring/IR SLAs) and O&M service expectations—indicating direct contribution to scope language. Draft_TH_CASS-E_IDIQ_SOW_6.11.24V6SH [Draft_TH_C....11.24V6SH | Word]
+
+
+CTDA Bridge 6 invoice review. You were on the federal review distribution for contractor hours/deliverables covering 10/25/25–11/21/25, providing feedback or concurrence to the COR ahead of billing. Peraton CTDA Bridge 6 Invoice – (10/25/2025–11/21/2025) [Peraton CT...11/212025) | Outlook]
+
+
+
+Additional touches captured in chat/email
+
+
+Analyst engagement syncs: You supported improving agendas and update hygiene (linking lower‑level tickets into TECHMAN epics for coherent brief‑outs). CDE & IPL Weekly Sync  [CDE & IPL...ekly Sync  | Teams]
+
+
+Project portfolio data quality: You received and tracked JANUS Data QC guidance (error dashboards for epics/tasks/assignees), contributing to cleaner reporting. FW: Janus Data Integrity QC - Update [FW: Janus...C - Update | Outlook]
+
+
+
+Notes on scope and gaps
+
+Furlough context: Per official notice, you were in non‑duty/non‑pay status Oct 1–Nov 1, 2025. Any activity during that period would be minimal or limited to excepted functions. [Michael.Ti...signed (1) | PDF]
+Coverage: I scanned across emails, Teams, calendar events, and files and focused on items where you drafted updates, asked decision‑driving questions, forwarded critical info, coordinated access, or were tasked/assigned to assist. If you want a fully exhaustive ledger (e.g., every mention across 1000+ emails/200+ chats/90+ meetings), I can generate a structured spreadsheet with date, artifact, collaborators, and a one‑line description.
